@@ -37,6 +37,7 @@ $dark-blue: #001536;
 $grey: #8A929C;
 $light-grey: #E9EEF3;
 $white: #FFFFFF;
+$red: #FF8E8E;
 
 .bg-blue {
     background-color: $dark-blue;
@@ -67,6 +68,10 @@ $white: #FFFFFF;
     color: $blue;
 }
 
+.red-text {
+    color: $red;
+}
+
 .light-orange-text {
     color: $light-orange
 }
@@ -84,9 +89,18 @@ $white: #FFFFFF;
 
 }
 
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+}
+
 main,
 body {
-    min-width: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 body {
@@ -115,9 +129,17 @@ body {
             box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.25);
             resize: none;
 
+            &:focus {
+                outline: 1px solid $grey;
+            }
+
             &::placeholder {
                 color: $grey;
             }
+        }
+
+        .error {
+            outline: 1px solid $red;
         }
 
         .comment-input {
@@ -129,17 +151,21 @@ body {
 
 a svg {
     &:hover {
-        #telegram, #telegramFooter {
+
+        #telegram,
+        #telegramFooter {
             fill: #28AFF2;
             transition: 0.3s;
         }
 
-        #viber, #viberFooter {
+        #viber,
+        #viberFooter {
             fill: #832E91;
             transition: 0.3s;
         }
 
-        #whatsapp, #whatsappFooter {
+        #whatsapp,
+        #whatsappFooter {
             fill: #2CCE2C;
             transition: 0.3s;
         }
@@ -189,12 +215,43 @@ a svg {
     }
 }
 
+// HEADER
+
+.header {
+    width: 100%;
+    min-height: 70px;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    z-index: 5;
+
+    .logo {
+        height: 56px;
+    }
+}
+
+.is-fixed {
+    position: fixed;
+    background-color: $dark-blue;
+    box-shadow: 0px 33px 25px -11px rgba(34, 60, 80, 0.2);
+    animation: slideDown 0.35s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
 // HERO 
 
 .hero {
     background: no-repeat top url(../src/images/background-hero.png);
-    height: 100vh;
-    max-height: 974px;
+    height: 970px;
 
     .hero-content-block {
         .btn-hero {
@@ -238,15 +295,26 @@ a svg {
             padding: 46px 20px 20px 20px;
             border-radius: 100px 100px 0 0;
             background: $white;
+            position: absolute;
+            bottom: 0;
         }
 
         .advantages-card-time-img {
-            margin-right: -32px;
             padding: 22px 25px 14px 57px;
             border-radius: 100px 0 20px 0;
             background: $white;
+            position: absolute;
+            bottom: 0;
+            right: 0;
         }
 
+        .advantages-card-model-img img {
+            width: 100%;
+        }
+    }
+
+    .advantages-small-cards {
+        flex-direction: column;
     }
 
     .card-blue {
@@ -256,17 +324,32 @@ a svg {
         align-items: center;
         text-align: center;
         height: 420px;
+        position: relative;
     }
 
     .card-orange {
         background: linear-gradient(135deg, rgb(255, 168, 0), rgb(250, 191, 136));
         height: 200px;
+        position: relative;
     }
 
     .card-purple {
         background: linear-gradient(135deg, rgb(131, 46, 145), rgb(230, 154, 242));
         padding-bottom: 40px;
         height: 200px;
+    }
+
+    .card-dark-blue {
+        background: linear-gradient(180deg, rgb(8, 39, 87), rgb(16, 42, 105), rgb(136, 155, 214));
+        height: 420px;
+
+        .h2 {
+            line-height: 36px;
+        }
+
+        .h4 {
+            line-height: 28px;
+        }
     }
 }
 
@@ -401,33 +484,33 @@ a svg {
         padding: 40px 32px;
         border-radius: 20px;
         box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.1);
-    
+
         .prons-card-title {
             font-weight: bold;
             color: $primary;
             text-transform: uppercase;
             margin-bottom: 20px;
         }
-    
+
         .prons-card-text {
             font-size: 18px;
             line-height: 24px;
             margin-bottom: 0;
         }
-    
+
         .prons-card-img {
             width: 100%;
         }
-    
+
         &:first-of-type {
             min-height: 300px;
         }
-    
+
         &:last-of-type {
             min-height: 330px;
         }
     }
-    
+
     .small {
         height: 300px;
     }
@@ -606,7 +689,7 @@ a svg {
         .small {
             height: 330px;
         }
-    
+
         .big {
             height: 686px;
         }
@@ -614,8 +697,8 @@ a svg {
 }
 
 @media (max-width: 1200px) {
-    .footer-logo {
-        margin-top: -6px;
+    .hero {
+        max-height: 880px;
     }
 
     .viber {
@@ -623,7 +706,7 @@ a svg {
     }
 
     .expertise {
-        .expertise-card {  
+        .expertise-card {
             padding: 30px 24px 32px 24px;
 
             .expertise-card-text {
@@ -654,18 +737,23 @@ a svg {
             &:first-of-type {
                 min-height: auto;
             }
-        
+
             &:last-of-type {
                 min-height: auto;
             }
         }
+
         .small {
             height: auto;
         }
-    
+
         .big {
             height: auto;
         }
+    }
+
+    .footer-logo {
+        margin-top: -6px;
     }
 }
 
@@ -685,6 +773,22 @@ a svg {
         max-width: 353px;
     }
 
+    .hero {
+        max-height: 800px;
+    }
+
+    .advantages {
+        .advantages-small-cards {
+            flex-direction: row;
+        }
+
+        .card-dark-blue {
+            .h2 {
+                font-size: 32px;
+            }
+        }
+    }
+
     .materials-wrap {
         .materials {
 
@@ -699,9 +803,10 @@ a svg {
 
     .services {
         .services-chips {
-                .chip-text {
-                    font-size: 16px;
-                }
+            .chip-text {
+                font-size: 16px;
+                padding: 14px 12px;
+            }
         }
     }
 
@@ -769,6 +874,70 @@ a svg {
 }
 
 @media (max-width: 768px) {
+    .header {
+        .header-phone a {
+            font-size: 16px;
+        }
+
+        .logo {
+            height: 36px;
+        }
+    }
+
+    .hero {
+        max-height: 750px;
+
+        h1 {
+            font-size: 27px;
+        }
+
+        .hero-description {
+            font-size: 20px
+        }
+
+        .hero-content-block {
+            .btn-hero {
+                padding: 10px 0;
+
+                .h3 {
+                    font-size: 23px
+                }
+
+                .h6 {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .advantages {
+        .advantages-card {
+            padding: 32px 16px 0 16px;
+
+            .card-accent-text {
+                line-height: 22px;
+            }
+
+            .card-text {
+                line-height: 24px;
+            }
+        }
+
+        .card-orange,
+        .card-purple {
+            height: 220px;
+
+            .h4 {
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }
+
+        .card-purple img {
+            width: 65px;
+        }
+    }
+
     .services-chips-first-block {
         flex-direction: column;
     }
@@ -802,15 +971,16 @@ a svg {
             &:first-of-type {
                 min-height: auto;
             }
-        
+
             &:last-of-type {
                 min-height: auto;
             }
         }
+
         .small {
             height: auto;
         }
-    
+
         .big {
             height: auto;
         }
@@ -826,6 +996,16 @@ a svg {
 }
 
 @media (max-width: 576px) {
+    .header {
+        .logo {
+            height: 30px;
+        }
+
+        .header-socials svg {
+            height: 16px;
+        }
+    }
+
     .matrix {
         .matrix-container {
             .matrix-title {
@@ -837,6 +1017,14 @@ a svg {
     .prons {
         .prons-title {
             width: 75%;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        h1 {
+            font-size: 24px;
         }
     }
 }

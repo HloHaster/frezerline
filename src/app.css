@@ -17235,6 +17235,10 @@ textarea.form-control-lg {
   color: #435178;
 }
 
+.red-text {
+  color: #FF8E8E;
+}
+
 .light-orange-text {
   color: #FFC657;
 }
@@ -17251,9 +17255,18 @@ textarea.form-control-lg {
   color: #FFFFFF;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+}
+
 main,
 body {
-  min-width: 100%;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -17279,26 +17292,35 @@ body form .form-input {
   box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.25);
   resize: none;
 }
+body form .form-input:focus {
+  outline: 1px solid #8A929C;
+}
 body form .form-input::-moz-placeholder {
   color: #8A929C;
 }
 body form .form-input::placeholder {
   color: #8A929C;
 }
+body form .error {
+  outline: 1px solid #FF8E8E;
+}
 body form .comment-input {
   min-height: 112px;
   text-align: start;
 }
 
-a svg:hover #telegram, a svg:hover #telegramFooter {
+a svg:hover #telegram,
+a svg:hover #telegramFooter {
   fill: #28AFF2;
   transition: 0.3s;
 }
-a svg:hover #viber, a svg:hover #viberFooter {
+a svg:hover #viber,
+a svg:hover #viberFooter {
   fill: #832E91;
   transition: 0.3s;
 }
-a svg:hover #whatsapp, a svg:hover #whatsappFooter {
+a svg:hover #whatsapp,
+a svg:hover #whatsappFooter {
   fill: #2CCE2C;
   transition: 0.3s;
 }
@@ -17343,10 +17365,36 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   background: #9C49A9;
 }
 
+.header {
+  width: 100%;
+  min-height: 70px;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 5;
+}
+.header .logo {
+  height: 56px;
+}
+
+.is-fixed {
+  position: fixed;
+  background-color: #001536;
+  box-shadow: 0px 33px 25px -11px rgba(34, 60, 80, 0.2);
+  animation: slideDown 0.35s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 .hero {
   background: no-repeat top url(../src/images/background-hero.png);
-  height: 100vh;
-  max-height: 974px;
+  height: 970px;
 }
 .hero .hero-content-block .btn-hero {
   display: flex;
@@ -17382,12 +17430,22 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   padding: 46px 20px 20px 20px;
   border-radius: 100px 100px 0 0;
   background: #FFFFFF;
+  position: absolute;
+  bottom: 0;
 }
 .advantages .advantages-card .advantages-card-time-img {
-  margin-right: -32px;
   padding: 22px 25px 14px 57px;
   border-radius: 100px 0 20px 0;
   background: #FFFFFF;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.advantages .advantages-card .advantages-card-model-img img {
+  width: 100%;
+}
+.advantages .advantages-small-cards {
+  flex-direction: column;
 }
 .advantages .card-blue {
   background: linear-gradient(180deg, rgb(5, 43, 101), rgb(35, 71, 160), rgb(189, 204, 249));
@@ -17396,15 +17454,27 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   align-items: center;
   text-align: center;
   height: 420px;
+  position: relative;
 }
 .advantages .card-orange {
   background: linear-gradient(135deg, rgb(255, 168, 0), rgb(250, 191, 136));
   height: 200px;
+  position: relative;
 }
 .advantages .card-purple {
   background: linear-gradient(135deg, rgb(131, 46, 145), rgb(230, 154, 242));
   padding-bottom: 40px;
   height: 200px;
+}
+.advantages .card-dark-blue {
+  background: linear-gradient(180deg, rgb(8, 39, 87), rgb(16, 42, 105), rgb(136, 155, 214));
+  height: 420px;
+}
+.advantages .card-dark-blue .h2 {
+  line-height: 36px;
+}
+.advantages .card-dark-blue .h4 {
+  line-height: 28px;
 }
 
 .services .services-chips .chip-text {
@@ -17660,8 +17730,8 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   }
 }
 @media (max-width: 1200px) {
-  .footer-logo {
-    margin-top: -6px;
+  .hero {
+    max-height: 880px;
   }
   .viber {
     padding: 16px 36px;
@@ -17698,6 +17768,9 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   .prons .big {
     height: auto;
   }
+  .footer-logo {
+    margin-top: -6px;
+  }
 }
 @media (max-width: 992px) {
   h2,
@@ -17711,6 +17784,15 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   .viber {
     max-width: 353px;
   }
+  .hero {
+    max-height: 800px;
+  }
+  .advantages .advantages-small-cards {
+    flex-direction: row;
+  }
+  .advantages .card-dark-blue .h2 {
+    font-size: 32px;
+  }
   .materials-wrap .materials .material,
   .materials-wrap .materials .dot {
     margin-right: 8px;
@@ -17719,6 +17801,7 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   }
   .services .services-chips .chip-text {
     font-size: 16px;
+    padding: 14px 12px;
   }
   .matrix .matrix-container {
     padding: 50px 20px 100px 20px;
@@ -17763,6 +17846,51 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   }
 }
 @media (max-width: 768px) {
+  .header .header-phone a {
+    font-size: 16px;
+  }
+  .header .logo {
+    height: 36px;
+  }
+  .hero {
+    max-height: 750px;
+  }
+  .hero h1, .hero .h1 {
+    font-size: 27px;
+  }
+  .hero .hero-description {
+    font-size: 20px;
+  }
+  .hero .hero-content-block .btn-hero {
+    padding: 10px 0;
+  }
+  .hero .hero-content-block .btn-hero .h3 {
+    font-size: 23px;
+  }
+  .hero .hero-content-block .btn-hero .h6 {
+    font-size: 14px;
+  }
+  .advantages .advantages-card {
+    padding: 32px 16px 0 16px;
+  }
+  .advantages .advantages-card .card-accent-text {
+    line-height: 22px;
+  }
+  .advantages .advantages-card .card-text {
+    line-height: 24px;
+  }
+  .advantages .card-orange,
+  .advantages .card-purple {
+    height: 220px;
+  }
+  .advantages .card-orange .h4,
+  .advantages .card-purple .h4 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .advantages .card-purple img {
+    width: 65px;
+  }
   .services-chips-first-block {
     flex-direction: column;
   }
@@ -17802,10 +17930,21 @@ a svg:hover #whatsapp, a svg:hover #whatsappFooter {
   }
 }
 @media (max-width: 576px) {
+  .header .logo {
+    height: 30px;
+  }
+  .header .header-socials svg {
+    height: 16px;
+  }
   .matrix .matrix-container .matrix-title {
     width: 72%;
   }
   .prons .prons-title {
     width: 75%;
+  }
+}
+@media (max-width: 576px) {
+  .hero h1, .hero .h1 {
+    font-size: 24px;
   }
 }

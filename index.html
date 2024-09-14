@@ -18,24 +18,25 @@
 <body>
   <div class="bg-blue">
     <div class="hero">
-      <header class="bg-transparent">
-        <div class="container px-15">
+      <header class="header">
+        <div class="container px-5 px-xl-15">
           <div class="py-5">
-            <div class="row">
-              <div class="col">
-                <img src="./src/images/logo-white.svg" alt="logo" style="height: 56px;">
+            <div class="row justify-content-between">
+              <div class="col-4">
+                <img class="logo" src="./src/images/logo-white.svg" alt="logo">
               </div>
-              <div class="col-6 d-flex align-items-center justify-content-end">
-                <div class="me-8 white-text">
+              <div class="col col-sm-8 col-md-7 col-lg-8 col-xxl-6 d-flex align-items-center justify-content-end">
+                <div class="d-none d-lg-block white-text me-8">
                   <p class="mb-0">пн-пт: 8:30 - 18:00</p>
                   <p class="mb-0">сб-вс: выходной</p>
                 </div>
 
-                <p class="me-8 mb-0"><a href="tel:+375297684155" class="white-text h3">+375 (29) 768-41-55</a></p>
+                <p class="me-2 me-sm-8 mb-0 header-phone"><a href="tel:+375297684155" class="white-text h3">+375 (29)
+                    768-41-55</a></p>
 
 
-                <div class="d-flex">
-                  <a href="https://t.me/+375297684155" target="_blank" class="me-2">
+                <div class="d-flex header-socials">
+                  <a href="https://t.me/+375297684155" target="_blank" class="me-0 me-sm-2">
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g clip-path="url(#clip0_100_25)">
                         <path id="telegram"
@@ -49,7 +50,7 @@
                       </defs>
                     </svg>
                   </a>
-                  <a href="viber://chat?number=%2B375297684155" target="_blank" class="me-2">
+                  <a href="viber://chat?number=%2B375297684155" target="_blank" class="me-0 me-sm-2">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g clip-path="url(#clip0_100_29)">
                         <path id="viber" fill-rule="evenodd" clip-rule="evenodd"
@@ -77,18 +78,20 @@
         </div>
       </header>
 
-      <section class="container hero-content-block px-15 pt-20">
-        <div class="row">
-          <div class="col-8">
-            <h1 class="text-uppercase white-text fw-bold mt-20 mb-8 pe-20">Фрезерные работы, изготовление деталей и форм
+      <section class="container hero-content-block px-5 px-xl-15 pt-20">
+        <div class="row mx-0 ">
+          <div class="col-12 col-lg-10 col-xl-9 col-xxl-8 px-0 px-lg-3">
+            <h1 class="text-uppercase white-text fw-bold  mt-10 mt-md-8 mt-xl-20 mb-8 pe-0 pe-md-20">Фрезерные
+              работы,<br>
+              изготовление деталей и форм
               на станках с ЧПУ</h1>
-            <p class="mb-20 h2 white-text">
+            <p class="hero-description mb-20 h2 white-text">
               Выпускаем изделия, детали и оснастку под заказ для частных организаций, локальных производств, а также
               крупной и инновационной промышленности
             </p>
             <a href="#cost-form" class="btn-hero mt-5">
               <span class="mb-0 h3 fw-bold text-uppercase">Заказать расчет</span>
-              <span class="mb-0">по чертежу или 3D-модели</span>
+              <span class="mb-0 h6">по чертежу или 3D-модели</span>
             </a>
           </div>
         </div>
@@ -99,10 +102,10 @@
 
   <main>
     <!-- Advantages -->
-    <div class="container px-15">
-      <div class="advantages px-11">
+    <div class="container px-5 px-xl-15">
+      <div class="advantages px-xxl-11">
         <div class="row">
-          <div class="col-4">
+          <div class="col-6 col-lg-4 order-1 mb-5 mb-xl-0">
             <div class="advantages-card card-blue">
               <p class="mb-2 h4">Длина</p>
               <p class="mb-2 fw-bold h1">4 метра</p>
@@ -113,33 +116,45 @@
             </div>
           </div>
 
-          <div class="col-4">
-            <div class="advantages-card card-orange mb-5">
-              <p class="mb-0 h4">Всегда сдаем работу</p>
-              <p class="mb-0 fw-bold h2 white-text card-accent-text">вовремя</p>
-              <div class="d-flex justify-content-end">
-                <div class="advantages-card-time-img">
-                  <img src="./src/images/clock.png" alt="clock" />
+          <div class="col-12 col-lg-4 order-3 order-lg-2">
+            <div class="row advantages-small-cards">
+              <div class="col-6 col-lg-12">
+                <div class="advantages-card card-orange mb-0 mb-lg-5">
+                  <p class="mb-0 h4">Всегда сдаем работу</p>
+                  <p class="mb-0 fw-bold h2 white-text card-accent-text">вовремя</p>
+                  <div class="d-flex justify-content-end">
+                    <div class="advantages-card-time-img">
+                      <img src="./src/images/clock.png" alt="clock" />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="advantages-card card-purple">
-              <div class="row">
-                <div class="col-8">
-                  <p class="mb-0 h4">инженеры</p>
-                  <p class="mb-0 fw-bold h2 white-text card-accent-text">с опытом</p>
-                  <p class="mb-0 mt-2 h4 card-text">в реальной промышленности</p>
-                </div>
-                <div class="col-4 d-flex align-items-end">
-                  <img src="./src/images/user-star.png" alt="user" />
+              <div class="col-6 col-lg-12">
+                <div class="advantages-card card-purple">
+                  <div class="row">
+                    <div class="col-12 col-md-8">
+                      <p class="mb-0 h4">инженеры</p>
+                      <p class="mb-0 fw-bold h2 white-text card-accent-text">с опытом</p>
+                      <p class="mb-0 mt-0 mt-lg-2 h4 card-text mb-5 mb-md-0">в реальной промышленности</p>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex align-items-end justify-content-end d-lg-none d-xl-flex">
+                      <img src="./src/images/user-star.png" alt="user" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-4">
-
+          <div class="col-6 col-lg-4 order-2 order-lg-last mb-5 mb-xl-0">
+            <div class="advantages-card card-dark-blue">
+              <p class="mb-0 h4">Возьмемся за</p>
+              <p class="mb-8 fw-bold h2">нетиповые решения</p>
+              <div class="advantages-card-model-img">
+                <img src="./src/images/model.png" alt="image of model">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -151,19 +166,19 @@
         <h2 class="primary-text fw-bold text-uppercase mb-8 mb-md-16">Выполняем штучные заказы и мелкосерийные партии
         </h2>
 
-        <div class="services-chips mb-16">
+        <div class="services-chips mb-8 mb-md-16">
           <div class="d-flex mb-4 services-chips-first-block">
             <p class="mb-0 h4 chip-text me-8 mb-4 mb-md-0">Фигурная резка и фрезеровка</p>
             <p class="mb-0 h4 chip-text">Детали, тестовые образцы и мастер-модели</p>
           </div>
           <div class="d-flex">
-            <p class="mb-0 h4 chip-text me-8">Модельная оснастка</p>
+            <p class="mb-0 h4 chip-text me-2 me-sm-8">Модельная оснастка</p>
             <p class="mb-0 h4 chip-text">2D и 3D обработка</p>
           </div>
         </div>
 
         <div class="row mb-16 mb-md-20">
-          <div class="col-10">
+          <div class="col-12 col-mb-10">
             <p class="mb-0 h4 primary-text">
               Работаем на современных станках с 4-ой поворотной осью. <br>
               Выполняем все виды работ от гравировки и выборки до обработки цилиндрических заготовок (резные балясины,
@@ -271,20 +286,26 @@
           <div class="col-12 col-lg-6 px-20 py-12 py-md-20">
             <form action="#" method="post">
               <div class="mb-5">
-                <input type="text" class="form-input" id="nameCostForm" placeholder="Имя" required>
+                <input type="text" class="form-input cost-form-field name" id="nameCostForm" placeholder="Имя *"
+                  required maxlength="50">
+                <div class="ms-7 mt-2 red-text error-text" id="errorNameCostForm"></div>
               </div>
               <div class="mb-5">
-                <input type="text" class="form-input" id="phoneCostForm" placeholder="Телефон" required>
+                <input type="text" class="form-input cost-form-field tel" id="phoneCostForm" placeholder="Телефон *"
+                  required>
+                <div class="ms-7 mt-2 red-text error-text" id="errorTelCostForm"></div>
               </div>
               <div class="mb-5">
-                <input type="text" class="form-input" id="emailCostForm" placeholder="E-mail" required>
+                <input type="text" class="form-input cost-form-field email" id="emailCostForm" placeholder="E-mail *"
+                  required>
+                <div class="ms-7 mt-2 red-text error-text" id="errorEmailCostForm"></div>
               </div>
               <div class="mb-5">
-                <textarea class="form-input comment-input" id="commentCostForm" placeholder="Комментарий или вопросы"
-                  required></textarea>
+                <textarea class="form-input comment-input cost-form-field comment" id="commentCostForm"
+                  placeholder="Комментарий или вопросы" required maxlength="1000"></textarea>
               </div>
               <div class="mb-10">
-                <input type="file" class="form-file-input" id="fileCostForm">
+                <input type="file" class="form-file-input cost-form-field file" id="fileCostForm">
               </div>
               <button type="submit" class="btn-secondary orange-btn">Заказать расчет</button>
             </form>

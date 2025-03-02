@@ -34,21 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   elements.forEach(el => observer.observe(el));
 });
 
-// // HEADER
-// const header = document.querySelector('.header');
-// const toggleClass = "is-fixed";
-
-// window.addEventListener('scroll', function () {
-//   const scrollFromTop = document.querySelector('html').scrollTop;
-//   const slideHeight = document.querySelector('.hero').offsetHeight;
-
-//   if (scrollFromTop >= slideHeight) {
-//     header.classList.add(toggleClass);
-//   } else {
-//     header.classList.remove(toggleClass);
-//   }
-// }
-// )
+// HEADER
 
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".header");
@@ -58,11 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleHeader() {
     if (window.scrollY > firstBlock.clientHeight - headerHeight) {
       header.classList.add("is-fixed");
-      document.body.style.paddingTop = `${headerHeight}px`;
       document.documentElement.style.overflowX = "hidden"; // Блокируем горизонтальную прокрутку
     } else {
       header.classList.remove("is-fixed");
-      document.body.style.paddingTop = "0px";
       document.documentElement.style.overflowX = "auto"; // Возвращаем прокрутку, если нужна
     }
   }

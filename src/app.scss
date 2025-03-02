@@ -142,9 +142,50 @@ body {
             outline: 1px solid $red;
         }
 
+        .error-message {
+            color: $red;
+            margin: 10px 0 0 28px;
+        }
+
         .comment-input {
             min-height: 112px;
             text-align: start;
+        }
+
+        .btn-attach {
+            background: transparent;
+            border: none;
+            color: $grey;
+            transition: 0.2s;
+
+            &:hover {
+                color: #5D6670;
+            }
+        }
+
+        #fileList {
+            margin-top: 10px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .file-name {
+            margin-right: 10px;
+        }
+
+        .remove-file {
+            cursor: pointer;
+            color: $grey;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .remove-file:hover {
+            color: #5D6670;
         }
     }
 }
@@ -220,6 +261,7 @@ a svg {
 .header {
     width: 100%;
     min-height: 70px;
+    position: absolute;
     top: 0;
     left: 0;
     background-color: transparent;
@@ -228,13 +270,24 @@ a svg {
     .logo {
         height: 56px;
     }
+
+    .header-phone a:hover {
+        color: $light-orange;
+    }
 }
 
 .is-fixed {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* 100% ширины экрана */
+    max-width: 100%;
+    /* Чтобы не выходил за границы */
     background-color: $dark-blue;
     box-shadow: 0px 33px 25px -11px rgba(34, 60, 80, 0.2);
     animation: slideDown 0.35s ease-out;
+    z-index: 1000;
 }
 
 @keyframes slideDown {
@@ -245,6 +298,34 @@ a svg {
     to {
         transform: translateY(0);
     }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateX(100px);
+    /* Начальное положение справа */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in.left {
+    transform: translateX(-100px);
+    /* Начальное положение слева */
+}
+
+.slide-in.show {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 // HERO 
@@ -297,6 +378,10 @@ a svg {
             background: $white;
             position: absolute;
             bottom: 0;
+
+            img {
+                width: 100%;
+            }
         }
 
         .advantages-card-time-img {
@@ -306,10 +391,6 @@ a svg {
             position: absolute;
             bottom: 0;
             right: 0;
-        }
-
-        .advantages-card-model-img img {
-            width: 100%;
         }
     }
 
@@ -342,6 +423,18 @@ a svg {
     .card-dark-blue {
         background: linear-gradient(180deg, rgb(8, 39, 87), rgb(16, 42, 105), rgb(136, 155, 214));
         height: 420px;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            right: -80px;
+            bottom: 10px;
+            width: 90%;
+            height: auto;
+            opacity: 50%;
+
+        }
 
         .h2 {
             line-height: 36px;
@@ -362,6 +455,36 @@ a svg {
             max-width: fit-content;
             background: $light-blue;
             border-radius: 20px;
+        }
+    }
+
+    .services-photos {
+        .gallery img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
         }
     }
 }
@@ -427,6 +550,8 @@ a svg {
             border-radius: 15px;
             height: 450px;
             background: $white;
+            position: relative;
+            overflow: hidden;
 
             .matrix-card-title {
                 width: 80%;
@@ -436,6 +561,20 @@ a svg {
                 width: 90%;
                 font-size: 18px;
                 line-height: 20px;
+            }
+
+            .matrix-card-plastic-model {
+                max-height: 200px;
+            }
+
+            img {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                max-width: 70%;
+                height: auto;
+                opacity: 0.15;
+                margin-top: 20px;
             }
         }
     }
@@ -528,9 +667,7 @@ a svg {
 
 .geo-images {
     .geo-img {
-        height: 118px;
-        width: 180px;
-        background: $light-blue;
+        width: 32%;
     }
 }
 
@@ -697,6 +834,12 @@ a svg {
 }
 
 @media (max-width: 1200px) {
+
+    h2,
+    .h2 {
+        font-size: 30px;
+    }
+
     .hero {
         max-height: 880px;
     }
@@ -715,11 +858,11 @@ a svg {
         }
 
         .small {
-            height: auto;
+            height: 365px;
         }
 
         .big {
-            height: 590px;
+            height: 762px;
             background: no-repeat bottom url(../src/images/expertise-level-bckg.png);
             background-size: cover;
         }
@@ -728,7 +871,7 @@ a svg {
     .prons {
         .prons-card {
             .prons-card-img {
-                width: 50%;
+                width: 100%;
                 border: 1px solid $blue;
                 border-radius: 20px;
                 padding: 30px 20px;
@@ -744,11 +887,11 @@ a svg {
         }
 
         .small {
-            height: auto;
+            height: 340px;
         }
 
         .big {
-            height: auto;
+            height: 704px;
         }
     }
 
@@ -771,6 +914,11 @@ a svg {
 
     .viber {
         max-width: 353px;
+        padding: 22px 20px;
+
+        img {
+            height: 36px;
+        }
     }
 
     .hero {
@@ -790,6 +938,8 @@ a svg {
     }
 
     .materials-wrap {
+        margin: 0;
+
         .materials {
 
             .material,
@@ -824,7 +974,8 @@ a svg {
         }
 
         .viber {
-            max-width: 100%;
+            max-width: 500px;
+            width: 100%;
         }
     }
 
@@ -837,13 +988,54 @@ a svg {
         }
     }
 
+    .expertise {
+        .small {
+            height: auto;
+        }
+
+        .big {
+            height: 590px;
+        }
+    }
+
     .prons {
         .prons-card {
             padding: 32px 20px;
 
+            .prons-card-img {
+                width: 50%;
+                border: 1px solid $blue;
+                border-radius: 20px;
+                padding: 30px 20px;
+            }
+
             .prons-card-title {
                 font-size: 20px;
             }
+        }
+
+        .small {
+            height: auto;
+        }
+
+        .big {
+            height: auto;
+        }
+    }
+
+    .geo {
+        background: no-repeat url(/src/images/map-belarus.png);
+        background-position: calc(100% + 130px) center;
+        /* Смещает фон на 20px вправо */
+
+        .geo-info {
+            background: none;
+        }
+    }
+
+    .form-card {
+        h2 {
+            font-size: 32px;
         }
     }
 
@@ -873,10 +1065,21 @@ a svg {
     }
 }
 
+@media (max-width: 991px) {
+    .form-card {
+        background: no-repeat center top url(/src/images/orange-corner-lg.png);
+        background-size: contain;
+
+        .bg-orange {
+            background: transparent;
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .header {
         .header-phone a {
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .logo {
@@ -923,6 +1126,15 @@ a svg {
             }
         }
 
+        .card-blue, .card-dark-blue {
+            max-height: 350px;
+
+            .card-big-text {
+                font-size: 24px;
+                line-height: 24px;
+            }
+        }
+
         .card-orange,
         .card-purple {
             height: 220px;
@@ -946,6 +1158,10 @@ a svg {
         .matrix-container {
             .matrix-title {
                 width: 60%;
+            }
+
+            .matrix-card {
+                padding: 30px 20px 32px 20px;
             }
         }
     }
@@ -987,18 +1203,21 @@ a svg {
     }
 
     .geo {
-        background: no-repeat right top url(/src/images/map-belarus.png);
-
-        .geo-info {
-            background: none;
-        }
+        background-position: calc(100% + 250px) center;
+        /* Смещает фон на 20px вправо */
     }
 }
 
 @media (max-width: 576px) {
     .header {
+        height: 70px;
+
         .logo {
             height: 30px;
+        }
+
+        .header-phone a {
+            font-size: 16px;
         }
 
         .header-socials svg {
@@ -1006,12 +1225,23 @@ a svg {
         }
     }
 
+    .hero {
+        h1 {
+            font-size: 24px;
+        }
+    }
+
     .matrix {
         .matrix-container {
             .matrix-title {
-                width: 72%;
+                width: 90%;
             }
         }
+    }
+
+    .form-card {
+        background: no-repeat center top url(/src/images/orange-corner-md.png);
+        background-size: contain;
     }
 
     .prons {
@@ -1019,12 +1249,45 @@ a svg {
             width: 75%;
         }
     }
+
+    .advantages {
+        .advantages-card {
+            padding: 31px 13px;
+
+            .card-small-text {
+                font-size: 16px
+            }
+        }
+
+        .card-blue, .card-dark-blue {
+            max-height: 300px
+        }
+
+        .card-dark-blue {    
+            img {
+                right: -30px;
+            }
+        }
+    }
 }
 
-@media (max-width: 576px) {
-    .hero {
-        h1 {
-            font-size: 24px;
+@media (max-width: 400px) {
+    .header {
+        .header-phone a {
+            font-size: 14px;
+        }
+    }
+
+    .prons {
+        .prons-title {
+            width: 100%;
+        }
+    }
+
+    .model {
+        .btn-secondary {
+            font-size: 20px;
+            padding: 14px 22px;
         }
     }
 }

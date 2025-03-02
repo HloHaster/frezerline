@@ -17304,9 +17304,42 @@ body form .form-input::placeholder {
 body form .error {
   outline: 1px solid #FF8E8E;
 }
+body form .error-message {
+  color: #FF8E8E;
+  margin: 10px 0 0 28px;
+}
 body form .comment-input {
   min-height: 112px;
   text-align: start;
+}
+body form .btn-attach {
+  background: transparent;
+  border: none;
+  color: #8A929C;
+  transition: 0.2s;
+}
+body form .btn-attach:hover {
+  color: #5D6670;
+}
+body form #fileList {
+  margin-top: 10px;
+}
+body form .file-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+body form .file-name {
+  margin-right: 10px;
+}
+body form .remove-file {
+  cursor: pointer;
+  color: #8A929C;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+body form .remove-file:hover {
+  color: #5D6670;
 }
 
 a svg:hover #telegram,
@@ -17368,6 +17401,7 @@ a svg:hover #whatsappFooter {
 .header {
   width: 100%;
   min-height: 70px;
+  position: absolute;
   top: 0;
   left: 0;
   background-color: transparent;
@@ -17376,12 +17410,22 @@ a svg:hover #whatsappFooter {
 .header .logo {
   height: 56px;
 }
+.header .header-phone a:hover {
+  color: #FFC657;
+}
 
 .is-fixed {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  /* 100% ширины экрана */
+  max-width: 100%;
+  /* Чтобы не выходил за границы */
   background-color: #001536;
   box-shadow: 0px 33px 25px -11px rgba(34, 60, 80, 0.2);
   animation: slideDown 0.35s ease-out;
+  z-index: 1000;
 }
 
 @keyframes slideDown {
@@ -17392,6 +17436,34 @@ a svg:hover #whatsappFooter {
     transform: translateY(0);
   }
 }
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-in {
+  opacity: 0;
+  transform: translateX(100px);
+  /* Начальное положение справа */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in.left {
+  transform: translateX(-100px);
+  /* Начальное положение слева */
+}
+
+.slide-in.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .hero {
   background: no-repeat top url(../src/images/background-hero.png);
   height: 970px;
@@ -17433,6 +17505,9 @@ a svg:hover #whatsappFooter {
   position: absolute;
   bottom: 0;
 }
+.advantages .advantages-card .advantages-card-size-img img {
+  width: 100%;
+}
 .advantages .advantages-card .advantages-card-time-img {
   padding: 22px 25px 14px 57px;
   border-radius: 100px 0 20px 0;
@@ -17440,9 +17515,6 @@ a svg:hover #whatsappFooter {
   position: absolute;
   bottom: 0;
   right: 0;
-}
-.advantages .advantages-card .advantages-card-model-img img {
-  width: 100%;
 }
 .advantages .advantages-small-cards {
   flex-direction: column;
@@ -17469,6 +17541,16 @@ a svg:hover #whatsappFooter {
 .advantages .card-dark-blue {
   background: linear-gradient(180deg, rgb(8, 39, 87), rgb(16, 42, 105), rgb(136, 155, 214));
   height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+.advantages .card-dark-blue img {
+  position: absolute;
+  right: -80px;
+  bottom: 10px;
+  width: 90%;
+  height: auto;
+  opacity: 50%;
 }
 .advantages .card-dark-blue .h2 {
   line-height: 36px;
@@ -17483,6 +17565,30 @@ a svg:hover #whatsappFooter {
   max-width: fit-content;
   background: #F2F5F9;
   border-radius: 20px;
+}
+.services .services-photos .gallery img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.services .services-photos .gallery img:hover {
+  transform: scale(1.05);
+}
+.services .services-photos .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+.services .services-photos .modal img {
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .materials-wrap {
@@ -17535,6 +17641,8 @@ a svg:hover #whatsappFooter {
   border-radius: 15px;
   height: 450px;
   background: #FFFFFF;
+  position: relative;
+  overflow: hidden;
 }
 .matrix .matrix-card-block .matrix-card .matrix-card-title {
   width: 80%;
@@ -17543,6 +17651,18 @@ a svg:hover #whatsappFooter {
   width: 90%;
   font-size: 18px;
   line-height: 20px;
+}
+.matrix .matrix-card-block .matrix-card .matrix-card-plastic-model {
+  max-height: 200px;
+}
+.matrix .matrix-card-block .matrix-card img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 70%;
+  height: auto;
+  opacity: 0.15;
+  margin-top: 20px;
 }
 
 .expertise .expertise-card {
@@ -17606,9 +17726,7 @@ a svg:hover #whatsappFooter {
 }
 
 .geo-images .geo-img {
-  height: 118px;
-  width: 180px;
-  background: #F2F5F9;
+  width: 32%;
 }
 
 .form-card {
@@ -17730,6 +17848,10 @@ a svg:hover #whatsappFooter {
   }
 }
 @media (max-width: 1200px) {
+  h2,
+  .h2 {
+    font-size: 30px;
+  }
   .hero {
     max-height: 880px;
   }
@@ -17743,15 +17865,15 @@ a svg:hover #whatsappFooter {
     font-size: 18px;
   }
   .expertise .small {
-    height: auto;
+    height: 365px;
   }
   .expertise .big {
-    height: 590px;
+    height: 762px;
     background: no-repeat bottom url(../src/images/expertise-level-bckg.png);
     background-size: cover;
   }
   .prons .prons-card .prons-card-img {
-    width: 50%;
+    width: 100%;
     border: 1px solid #435178;
     border-radius: 20px;
     padding: 30px 20px;
@@ -17763,10 +17885,10 @@ a svg:hover #whatsappFooter {
     min-height: auto;
   }
   .prons .small {
-    height: auto;
+    height: 340px;
   }
   .prons .big {
-    height: auto;
+    height: 704px;
   }
   .footer-logo {
     margin-top: -6px;
@@ -17783,6 +17905,10 @@ a svg:hover #whatsappFooter {
   }
   .viber {
     max-width: 353px;
+    padding: 22px 20px;
+  }
+  .viber img {
+    height: 36px;
   }
   .hero {
     max-height: 800px;
@@ -17792,6 +17918,9 @@ a svg:hover #whatsappFooter {
   }
   .advantages .card-dark-blue .h2 {
     font-size: 32px;
+  }
+  .materials-wrap {
+    margin: 0;
   }
   .materials-wrap .materials .material,
   .materials-wrap .materials .dot {
@@ -17813,7 +17942,8 @@ a svg:hover #whatsappFooter {
     font-size: 20px;
   }
   .matrix .viber {
-    max-width: 100%;
+    max-width: 500px;
+    width: 100%;
   }
   .model {
     padding: 100px 0;
@@ -17822,11 +17952,40 @@ a svg:hover #whatsappFooter {
     font-size: 20px;
     padding: 14px 30px;
   }
+  .expertise .small {
+    height: auto;
+  }
+  .expertise .big {
+    height: 590px;
+  }
   .prons .prons-card {
     padding: 32px 20px;
   }
+  .prons .prons-card .prons-card-img {
+    width: 50%;
+    border: 1px solid #435178;
+    border-radius: 20px;
+    padding: 30px 20px;
+  }
   .prons .prons-card .prons-card-title {
     font-size: 20px;
+  }
+  .prons .small {
+    height: auto;
+  }
+  .prons .big {
+    height: auto;
+  }
+  .geo {
+    background: no-repeat url(/src/images/map-belarus.png);
+    background-position: calc(100% + 130px) center;
+    /* Смещает фон на 20px вправо */
+  }
+  .geo .geo-info {
+    background: none;
+  }
+  .form-card h2, .form-card .h2 {
+    font-size: 32px;
   }
   .faq-questions .faq-question .faq-title {
     font-size: 18px;
@@ -17845,9 +18004,18 @@ a svg:hover #whatsappFooter {
     margin-bottom: 32px;
   }
 }
+@media (max-width: 991px) {
+  .form-card {
+    background: no-repeat center top url(/src/images/orange-corner-lg.png);
+    background-size: contain;
+  }
+  .form-card .bg-orange {
+    background: transparent;
+  }
+}
 @media (max-width: 768px) {
   .header .header-phone a {
-    font-size: 16px;
+    font-size: 18px;
   }
   .header .logo {
     height: 36px;
@@ -17879,6 +18047,13 @@ a svg:hover #whatsappFooter {
   .advantages .advantages-card .card-text {
     line-height: 24px;
   }
+  .advantages .card-blue, .advantages .card-dark-blue {
+    max-height: 350px;
+  }
+  .advantages .card-blue .card-big-text, .advantages .card-dark-blue .card-big-text {
+    font-size: 24px;
+    line-height: 24px;
+  }
   .advantages .card-orange,
   .advantages .card-purple {
     height: 220px;
@@ -17896,6 +18071,9 @@ a svg:hover #whatsappFooter {
   }
   .matrix .matrix-container .matrix-title {
     width: 60%;
+  }
+  .matrix .matrix-container .matrix-card {
+    padding: 30px 20px 32px 20px;
   }
   .model-bckg {
     background: no-repeat url(../src/images/cubes-mobile.png);
@@ -17923,28 +18101,58 @@ a svg:hover #whatsappFooter {
     height: auto;
   }
   .geo {
-    background: no-repeat right top url(/src/images/map-belarus.png);
-  }
-  .geo .geo-info {
-    background: none;
+    background-position: calc(100% + 250px) center;
+    /* Смещает фон на 20px вправо */
   }
 }
 @media (max-width: 576px) {
+  .header {
+    height: 70px;
+  }
   .header .logo {
     height: 30px;
+  }
+  .header .header-phone a {
+    font-size: 16px;
   }
   .header .header-socials svg {
     height: 16px;
   }
+  .hero h1, .hero .h1 {
+    font-size: 24px;
+  }
   .matrix .matrix-container .matrix-title {
-    width: 72%;
+    width: 90%;
+  }
+  .form-card {
+    background: no-repeat center top url(/src/images/orange-corner-md.png);
+    background-size: contain;
   }
   .prons .prons-title {
     width: 75%;
   }
+  .advantages .advantages-card {
+    padding: 31px 13px;
+  }
+  .advantages .advantages-card .card-small-text {
+    font-size: 16px;
+  }
+  .advantages .card-blue, .advantages .card-dark-blue {
+    max-height: 300px;
+  }
+  .advantages .card-dark-blue img {
+    right: -30px;
+  }
 }
-@media (max-width: 576px) {
-  .hero h1, .hero .h1 {
-    font-size: 24px;
+@media (max-width: 400px) {
+  .header .header-phone a {
+    font-size: 14px;
+  }
+  .prons .prons-title {
+    width: 100%;
+  }
+  .model .btn-secondary {
+    font-size: 20px;
+    padding: 14px 22px;
   }
 }

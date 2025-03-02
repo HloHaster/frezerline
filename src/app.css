@@ -17255,6 +17255,10 @@ textarea.form-control-lg {
   color: #FFFFFF;
 }
 
+:root {
+  color-scheme: only light;
+}
+
 html,
 body {
   width: 100%;

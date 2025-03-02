@@ -17579,7 +17579,8 @@ a svg:hover #whatsappFooter {
 .services .services-photos .gallery img:hover {
   transform: scale(1.05);
 }
-.services .services-photos .modal {
+
+.modal {
   display: none;
   position: fixed;
   top: 0;
@@ -17590,7 +17591,8 @@ a svg:hover #whatsappFooter {
   justify-content: center;
   align-items: center;
 }
-.services .services-photos .modal img {
+
+.modal img {
   max-width: 90%;
   max-height: 90%;
 }

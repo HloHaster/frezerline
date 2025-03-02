@@ -201,30 +201,30 @@
         <div class="services-photos">
           <div class="row gallery">
             <div class="col-6 col-md-4 mb-4 mb-sm-6 mb-lg-8">
-              <img src="./src/images/services-photo-1.png" onclick="openModal(this.src)" alt="Image of product 1">
+              <img src="./src/images/services-photo-1.png" onclick="openModal(this.src.replace(/(\.[^.]+)$/, '-full.jpg'))" alt="Image of product 1">
             </div>
             <div class="col-6 col-md-4 mb-4 mb-sm-6 mb-lg-8">
-              <img src="./src/images/services-photo-2.png" onclick="openModal(this.src)" alt="Image of product 2">
+              <img src="./src/images/services-photo-2.png" onclick="openModal(this.src.replace(/(\.[^.]+)$/, '-full.jpg'))" alt="Image of product 2">
             </div>
             <div class="col-6 col-md-4 mb-4 mb-sm-6 mb-lg-8">
-              <img src="./src/images/services-photo-3.png" onclick="openModal(this.src)" alt="Image of product 3">
+              <img src="./src/images/services-photo-3.png" onclick="openModal(this.src.replace(/(\.[^.]+)$/, '-full.jpg'))" alt="Image of product 3">
             </div>
             <div class="col-6 col-md-4 mb-3">
-              <img src="./src/images/services-photo-4.png" onclick="openModal(this.src)" alt="Image of product 4">
+              <img src="./src/images/services-photo-4.png" onclick="openModal(this.src.replace(/(\.[^.]+)$/, '-full.jpg'))" alt="Image of product 4">
             </div>
             <div class="col-6 col-md-4 mb-3">
-              <img src="./src/images/services-photo-5.png" onclick="openModal(this.src)" alt="Image of product 5">
+              <img src="./src/images/services-photo-5.png" onclick="openModal(this.src.replace(/(\.[^.]+)$/, '-full.jpg'))" alt="Image of product 5">
             </div>
             <div class="col-6 col-md-4 mb-3">
-              <img src="./src/images/services-photo-6.png" onclick="openModal(this.src)" alt="Image of product 6">
+              <img src="./src/images/services-photo-6.png" onclick="openModal(this.src.replace(/(\.[^.]+)$/, '-full.jpg'))" alt="Image of product 6">
             </div>
-          </div>
-
-          <div class="modal" id="modal" onclick="closeModal()">
-            <img id="modal-img" src="" alt="Увеличенное фото">
           </div>
         </div>
       </section>
+
+      <div class="modal" id="modal" onclick="closeModal()">
+        <img id="modal-img" src="" alt="Увеличенное фото">
+      </div>
 
       <!-- Materials -->
       <section class="services slide-in left py-12 py-md-20">

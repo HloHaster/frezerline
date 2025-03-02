@@ -17797,7 +17797,7 @@ a svg:hover #whatsappFooter {
 }
 .faq-questions button[aria-expanded=true] + .faq-content {
   opacity: 1;
-  max-height: 9em;
+  max-height: 10em;
   transition: all 200ms linear;
   will-change: opacity, max-height;
 }

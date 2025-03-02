@@ -17722,7 +17722,7 @@ a svg:hover #whatsappFooter {
 }
 
 .geo-info {
-  background: no-repeat right top url(/src/images/map-belarus.png);
+  background: no-repeat right top url(../src/images/map-belarus.png);
 }
 
 .geo-images .geo-img {
@@ -17738,11 +17738,11 @@ a svg:hover #whatsappFooter {
 }
 
 .form-card-right {
-  background: no-repeat right top url(/src/images/orange-corner-desktop.png);
+  background: no-repeat right top url(../src/images/orange-corner-desktop.png);
 }
 
 .form-card-left {
-  background: no-repeat left top url(/src/images/orange-corner-left-desktop.png);
+  background: no-repeat left top url(../src/images/orange-corner-left-desktop.png);
 }
 
 .faq-questions .faq-question {
@@ -17932,6 +17932,9 @@ a svg:hover #whatsappFooter {
     font-size: 16px;
     padding: 14px 12px;
   }
+  .services .services-photos .gallery img:hover {
+    transform: none;
+  }
   .matrix .matrix-container {
     padding: 50px 20px 100px 20px;
   }
@@ -17977,7 +17980,7 @@ a svg:hover #whatsappFooter {
     height: auto;
   }
   .geo {
-    background: no-repeat url(/src/images/map-belarus.png);
+    background: no-repeat url(../src/images/map-belarus.png);
     background-position: calc(100% + 130px) center;
     /* Смещает фон на 20px вправо */
   }
@@ -18006,7 +18009,7 @@ a svg:hover #whatsappFooter {
 }
 @media (max-width: 991px) {
   .form-card {
-    background: no-repeat center top url(/src/images/orange-corner-lg.png);
+    background: no-repeat center top url(../src/images/orange-corner-lg.png);
     background-size: contain;
   }
   .form-card .bg-orange {
@@ -18125,7 +18128,7 @@ a svg:hover #whatsappFooter {
     width: 90%;
   }
   .form-card {
-    background: no-repeat center top url(/src/images/orange-corner-md.png);
+    background: no-repeat center top url(../src/images/orange-corner-md.png);
     background-size: contain;
   }
   .prons .prons-title {

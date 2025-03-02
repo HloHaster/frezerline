@@ -662,7 +662,7 @@ a svg {
 
 // GEO
 .geo-info {
-    background: no-repeat right top url(/src/images/map-belarus.png);
+    background: no-repeat right top url(../src/images/map-belarus.png);
 }
 
 .geo-images {
@@ -682,11 +682,11 @@ a svg {
 }
 
 .form-card-right {
-    background: no-repeat right top url(/src/images/orange-corner-desktop.png);
+    background: no-repeat right top url(../src/images/orange-corner-desktop.png);
 }
 
 .form-card-left {
-    background: no-repeat left top url(/src/images/orange-corner-left-desktop.png);
+    background: no-repeat left top url(../src/images/orange-corner-left-desktop.png);
 }
 
 // FAQ
@@ -958,6 +958,14 @@ a svg {
                 padding: 14px 12px;
             }
         }
+
+        .services-photos {
+            .gallery img {
+                &:hover {
+                    transform: none;
+                }
+            }
+        }
     }
 
     .matrix {
@@ -1024,7 +1032,7 @@ a svg {
     }
 
     .geo {
-        background: no-repeat url(/src/images/map-belarus.png);
+        background: no-repeat url(../src/images/map-belarus.png);
         background-position: calc(100% + 130px) center;
         /* Смещает фон на 20px вправо */
 
@@ -1067,7 +1075,7 @@ a svg {
 
 @media (max-width: 991px) {
     .form-card {
-        background: no-repeat center top url(/src/images/orange-corner-lg.png);
+        background: no-repeat center top url(../src/images/orange-corner-lg.png);
         background-size: contain;
 
         .bg-orange {
@@ -1240,7 +1248,7 @@ a svg {
     }
 
     .form-card {
-        background: no-repeat center top url(/src/images/orange-corner-md.png);
+        background: no-repeat center top url(../src/images/orange-corner-md.png);
         background-size: contain;
     }
 

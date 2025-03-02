@@ -1,35 +1,50 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Получение данных из формы
-    $name = $_POST['name']; 
-    $phone = $_POST['phone']; 
-    $email = $_POST['email']; 
-    $comment = isset($_POST['comment']) ? $_POST['comment'] : 'Без комментария'; 
 
-    $to = "hlohaster@gmail.com"; 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require "PHPMailer/src/Exception.php";
+    require "PHPMailer/src/PHPMailer.php";
+
+    $mail = new PHPMailer(true); /* Создаем объект MAIL */
+    $mail->CharSet = "UTF-8"; /* Задаем кодировку UTF-8 */
+    $mail->IsHTML(true); /* Разрешаем работу с HTML */
     
-    // Тема письма
-    $subject = "Новая заявка с формы"; // Тема письма (можно заменить)
+    $name = $_POST["name"]; /* Принимаем имя пользователя с формы .. */
+    $phone = $_POST["phone"]; /* Телефон */
+    $email = $_POST["email"]; /* Почту */
+    $message = $_POST["comment"]; /* Сообщение с формы */
 
-    // Формирование тела письма
-    $message = "Имя: $name\nТелефон: $phone\nПочта: $email\nКомментарий: $comment";
+    $email_template = "template_mail.html";
 
-    // Обработка файлов (если они прикреплены)
-    if (!empty($_FILES['files']['name'][0])) {
-        $files = $_FILES['files'];
+    $body = file_get_contents($email_template); // Сохраняем данные в $body
+    $body = str_replace('%name%', $name, $body); // Заменяем строку %name% на имя
+    $body = str_replace('%phone%', $phone, $body); // строку %phone% на телефон
+    $body = str_replace('%email%', $email, $body); // строку %email% на почту
+    $body = str_replace('%comment%', $comment, $body); // строку %comment% на сообщение
 
-        // Здесь можно добавить код для прикрепления файлов к письму
-        // Например, можно сохранять файлы на сервере или прикреплять их к письму
-    }
+    $body = $name . '' . $phone . '' . $email . '' . $comment;
+    $theme = "[Заявка с сайта]"
 
-    // Отправка письма
-    $headers = "From: $email"; // Заголовки письма (от кого)
 
-    // Функция mail() отправляет письмо
-    // Замените your-email@example.com на ваш почтовый ящик для тестирования
-    if (mail($to, $subject, $message, $headers)) {
-        echo json_encode(['success' => true]); // Возвращаем успешный ответ
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Ошибка отправки письма.']); // Сообщение об ошибке
-    }
-}
+    $mail->addAddress("hlohaster@gmail.com")
+
+    $mail->Subject = $theme
+    $mail->Body = $body
+
+    $mail->Send
+
+    if (!$mail->send()) {
+        $message = "Ошибка отправки";
+      } else {
+        $message = "Данные отправлены!";
+      }
+      
+      /* Возвращаем ответ */	
+      $response = ["message" => $message];
+      
+      /* Ответ в формате JSON */
+      header('Content-type: application/json');
+      echo json_encode($response);
+      
+      ?>

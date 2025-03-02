@@ -266,7 +266,7 @@ function removeErrorMessage(input) {
 }
 
 // Функция для отправки формы
-function handleFormSubmit(event) {
+async function handleFormSubmit(event) {
   event.preventDefault();
   const form = event.target;
 
@@ -275,25 +275,31 @@ function handleFormSubmit(event) {
     return;
   }
 
-  const formData = new FormData(form);
+  const data = serializeForm(form); // получаем данные формы
+  console.log("Я тута")
+  const response = await sendData(data, form.id); // отправляем данные на почту
 
-  // Отправка данных
-  sendFormData(formData, form.id);
+  if (response.ok) {
+    let result = await response.json(); // если ответ OK отвечает пользователю
+    alert(result.message); // .. что данные отправлены
+    resetForm(form.id); // сбрасываем поля формы
+  } else {
+    alert("Код ошибки: " + response.status); // если not OK - показываем код ошибки
+  }
+}
+
+function serializeForm(formNode) {
+  // формируем данные формы
+  return new FormData(formNode);
 }
 
 // Функция отправки данных формы
-function sendFormData(formData, formId) {
-  fetch('send_mail.php', {
-    method: 'POST',
-    body: formData,
-  })
-  .then(response => response.json())
-  .then(data => {
-    alert('Форма успешно отправлена!');
-    resetForm(formId);  // Очистка формы после успешной отправки
-  })
-  .catch(error => {
-    console.error('Ошибка отправки формы:', error);
+async function sendData(data, formId) {
+  console.log(formId)
+  return await fetch("send_mail.php", {
+    // отправляем в скрипт send_mail.php
+    method: "POST", // методом POST
+    body: data,
   });
 }
 

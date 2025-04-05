@@ -7,7 +7,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum=1.0, user-scalable=no">
   <link rel="icon" href="/favicon1.ico" type="image/x-icon">
   <title>Фрезеровка ЧПУ | Любая сложность</title>
   <meta name="color-scheme" content="only light">
@@ -327,7 +327,7 @@
                 необходимых данных</p>
             </div>
 
-            <form action="#" method="post" class="uploadForm" id="costForm">
+            <form action="send.php" method="post" class="uploadForm" id="costForm">
               <div class="mb-5">
                 <input type="text" class="form-input name" id="name1" name="name" placeholder="Имя *" required
                   maxlength="50">
@@ -347,9 +347,8 @@
               </div>
 
               <div class="mb-10">
-                <input type="file" class="form-input file" id="file1" style="display: none;">
-                <button type="button" id="buttonAttach1" class="btn-attach">+ прикрепить файл (чертеж,
-                  модель)</button>
+                <input type="file" class="form-input file" id="file1" name="files[]" style="display: none;">
+                <button type="button" id="buttonAttach1" class="btn-attach text-start">+ прикрепить файл <br> (чертеж, 3D-модель в форматах stp. igs. dwg)</button>
                 <div class="fileList" id="fileList1"></div>
               </div>
 
@@ -602,7 +601,7 @@
           </div>
 
           <div class="col-12 col-lg-6 px-5 px-lg-12 px-xxl-20 py-20">
-            <form action="#" method="post" id="requestForm" class="uploadForm">
+            <form action="send.php" method="post" id="requestForm" class="uploadForm">
               <div class="mb-5">
                 <input type="text" class="form-input name" id="name2" name="name" placeholder="Имя *" required
                   maxlength="50">
@@ -622,9 +621,8 @@
               </div>
 
               <div class="mb-10">
-                <input type="file" class="form-input file" id="file2" style="display: none;">
-                <button type="button" id="buttonAttach2" class="btn-attach">+ прикрепить файл (чертеж,
-                  модель)</button>
+                <input type="file" class="form-input file" id="file2" name="files[]" style="display: none;">
+                <button type="button" id="buttonAttach2" class="btn-attach text-start">+ прикрепить файл <br> (чертеж, 3D-модель в форматах stp. igs. dwg)</button>
                 <div class="fileList" id="fileList2"></div>
               </div>
 

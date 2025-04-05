@@ -17332,6 +17332,7 @@ body form .file-item {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  padding: 0 6px;
 }
 body form .file-name {
   margin-right: 10px;
@@ -17836,6 +17837,33 @@ a svg:hover #whatsappFooter {
   color: #FFC657;
 }
 
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #ccc;
+  border-top-color: #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 @media (max-width: 1400px) {
   .footer-logo {
     margin-top: -7px;
@@ -18056,10 +18084,12 @@ a svg:hover #whatsappFooter {
   .advantages .advantages-card .card-text {
     line-height: 24px;
   }
-  .advantages .card-blue, .advantages .card-dark-blue {
+  .advantages .card-blue,
+  .advantages .card-dark-blue {
     max-height: 350px;
   }
-  .advantages .card-blue .card-big-text, .advantages .card-dark-blue .card-big-text {
+  .advantages .card-blue .card-big-text,
+  .advantages .card-dark-blue .card-big-text {
     font-size: 24px;
     line-height: 24px;
   }
@@ -18146,7 +18176,8 @@ a svg:hover #whatsappFooter {
   .advantages .advantages-card .card-small-text {
     font-size: 16px;
   }
-  .advantages .card-blue, .advantages .card-dark-blue {
+  .advantages .card-blue,
+  .advantages .card-dark-blue {
     max-height: 300px;
   }
   .advantages .card-dark-blue img {

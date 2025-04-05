@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function openModal(src) {
   if (window.innerWidth > 768) {
-      document.getElementById('modal-img').src = src;
-      document.getElementById('modal').style.display = 'flex';
+    document.getElementById('modal-img').src = src;
+    document.getElementById('modal').style.display = 'flex';
   }
 }
 function closeModal() {
@@ -92,12 +92,12 @@ const maxFiles = 7;
 let timeout = null
 
 forms.forEach(form => {
-   // Валидация файлов при изменении
+  // Валидация файлов при изменении
   const fileInput = form.querySelector('input[type="file"]');
   const fileListDiv = form.querySelector('.fileList');
   const attachBtn = form.querySelector('.btn-attach')
 
-  attachBtn.addEventListener('click', function(e) {
+  attachBtn.addEventListener('click', function (e) {
     fileInput.click()
   })
 
@@ -200,8 +200,8 @@ function validateFiles(fileInput, fileListDiv) {
     isValid = false;
   }
 
-   // Фильтрация неподдерживаемых файлов
-   const filteredFiles = files.filter(file => {
+  // Фильтрация неподдерживаемых файлов
+  const filteredFiles = files.filter(file => {
     const fileExtension = file.name.slice(file.name.lastIndexOf('.')).toLowerCase();
     if (!validExtensions.includes(fileExtension)) {
       alert(`Невалидный формат файла: ${file.name}. Доступны только .stp, .dxf, .dwg, .igs.`);
@@ -274,33 +274,25 @@ async function handleFormSubmit(event) {
     alert('Пожалуйста, заполните все обязательные поля корректно.');
     return;
   }
+  
+  showLoader(); // показываем прелоадер
+  try {
+    // Формируем запрос
+    const response = await fetch(event.target.action, {
+      method: 'POST',
+      body: new FormData(form)
+    });
 
-  const data = serializeForm(form); // получаем данные формы
-  console.log("Я тута")
-  const response = await sendData(data, form.id); // отправляем данные на почту
-
-  if (response.ok) {
-    let result = await response.json(); // если ответ OK отвечает пользователю
-    alert(result.message); // .. что данные отправлены
-    resetForm(form.id); // сбрасываем поля формы
-  } else {
+    if (response.ok) {
+      hideLoader(); // скрываем прелоадер
+      alert('Ваша заявка отправлена'); 
+      resetForm(form.id);
+    }
+  } catch (error) { // обработка ошибки
     alert("Код ошибки: " + response.status); // если not OK - показываем код ошибки
+  } finally {
+    hideLoader(); // скрываем прелоадер
   }
-}
-
-function serializeForm(formNode) {
-  // формируем данные формы
-  return new FormData(formNode);
-}
-
-// Функция отправки данных формы
-async function sendData(data, formId) {
-  console.log(formId)
-  return await fetch("send_mail.php", {
-    // отправляем в скрипт send_mail.php
-    method: "POST", // методом POST
-    body: data,
-  });
 }
 
 // Очистка формы
@@ -309,4 +301,21 @@ function resetForm(formId) {
   form.reset();
   const fileListDiv = form.querySelector('.fileList');
   fileListDiv.innerHTML = ''; // Очистка списка файлов
+}
+
+// Прелоадер
+const loader = document.createElement('div');
+loader.className = 'loader-overlay';
+loader.innerHTML = '<div class="spinner"></div>';
+document.body.appendChild(loader);
+loader.style.display = 'none';
+
+// Показываем прелоадер
+function showLoader() {
+  loader.style.display = 'flex';
+}
+
+// Скрываем прелоадер
+function hideLoader() {
+  loader.style.display = 'none';
 }

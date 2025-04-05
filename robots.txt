@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Host: http://frezerline.by/
+Sitemap: http://frezerline.by/sitemap.xml
